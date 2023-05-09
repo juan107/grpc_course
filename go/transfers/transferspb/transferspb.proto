@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package transfers;
+
+option go_package = "transfers/transferspb";
+
+import "google/date.proto";
+
+message TransfersRequest{
+  string origin_account = 1;
+  string receiver_account = 2;
+  double amount = 3;
+}
+
+message TransfersResponse{
+  google.type.Date operation_date = 1;
+}
+
+service TransfersService{
+  rpc Transfer(TransfersRequest) returns (TransfersResponse){};
+}
